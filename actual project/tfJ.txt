@@ -1,0 +1,43 @@
+# tfM: 8 overlapping process, no I/O
+# try with:
+#             besttq  thisfile   50  500  50
+#             besttq  thisfile   50  200  20
+#
+
+device floppy 30000 bytes/sec
+device disk 80000 bytes/sec
+reboot
+
+
+process 1 10 {	
+    i/o  250  floppy 2200
+    i/o  250  disk   4600	
+    exit        500
+}
+process 2 220 {
+	i/o 100 disk 1000
+    exit        500
+}
+process 3 330 {
+	i/o 230 floppy 1600
+    exit        500
+}
+process 4 440 {
+	i/o 333 disk 3000
+	i/o 430 disk 1300
+    exit        500
+}
+process 5 550 {
+	i/o 220 floppy 2100
+    exit        300
+}
+process 6 660 {
+    exit        300
+}
+process 7 770 {
+    exit        300
+}
+process 8 880 {
+    exit        300
+}
+

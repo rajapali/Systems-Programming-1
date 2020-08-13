@@ -1,0 +1,14 @@
+device	floppy	30000 bytes/sec
+#
+reboot
+#
+process 2 100 {
+        i/o  100 floppy 3
+	exit	1800
+}
+#
+process 5 308 {
+	
+	exit	1400
+}
+

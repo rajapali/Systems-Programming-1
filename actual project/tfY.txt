@@ -1,0 +1,40 @@
+# Tests overlapping occurrences
+
+device    usb      1000000 bytes/sec
+reboot
+
+process 1 0 {
+    i/o     0   usb 100
+    exit        50
+}
+
+
+process 21 55 {
+   i/o      10     usb     100
+    exit        100
+}
+
+process 22 55 {
+   i/o      10     usb     100
+    exit        100
+}
+
+
+
+process 31 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+process 32 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+process 33 60 {
+  i/o      10     usb     100
+    exit        100
+}
+
+
+

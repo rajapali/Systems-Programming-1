@@ -1,0 +1,29 @@
+# Designed to test if the project can handle:
+# - staying on a high priority device when a new one comes in
+# - switching from a low to a high priority device when the high priority one comes in
+
+device    floppy      100000 bytes/sec
+device    usb         1500000  bytes/sec
+device    ssd        3000000 bytes/sec
+reboot
+
+# Medium priority is going
+# transfer time = 50
+process  11  0 {
+  i/o      0     usb   75
+  exit     55
+}
+
+# Low priority comes in  = Shouldn't switch
+# transfer time = 1500
+process  12  10 {
+  i/o      5    floppy  150
+  exit     40
+}
+
+# Highest priority enters = Should switch
+# transfer time = 50
+process  13  50 {
+  i/o      10    ssd  150
+  exit     200
+}
